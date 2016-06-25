@@ -6,6 +6,7 @@ if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
     source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
 fi
 
+# keep sensative info in dropbox
 TOKEN_FILE="/Users/${USER}/Dropbox/Share/kevin/tokens.sh"
 if [ -r ${TOKEN_FILE} ]; then
     source ${TOKEN_FILE}
