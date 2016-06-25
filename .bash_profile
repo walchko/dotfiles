@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export EDITOR=`which pico`
 
 # https://github.com/magicmonty/bash-git-prompt/tree/master/themes
