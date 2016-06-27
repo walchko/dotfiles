@@ -42,3 +42,9 @@ extract () {
          echo "'$1' is not a valid file"
      fi
 }
+
+# fully update pip
+# -----------------------------------------------
+pip-upgrade-all() {
+    pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
+}
