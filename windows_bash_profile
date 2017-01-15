@@ -32,3 +32,10 @@ if [ -f "${SSH_ENV}" ]; then
 else
 	start_agent;
 fi
+
+USR="\[\033[01;32m\]"
+HOST="\[\033[01;35m\]"
+DIR="\[\033[01;34m\]"
+END="\[\033[0m\]"
+
+export PS1="$USR\u@$HOST\h $DIR\W$END \$ "
