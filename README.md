@@ -123,3 +123,8 @@ So my work's firewall also prevents `ssh` on port `22`, so I have to setup `git`
 over https on port `443`:
 
 	ln ~/Documents/Github/dotfiles/ssh_config ~/.ssh/config
+
+
+## Bash
+
+A good tutorial is here from [Adafruit](https://learn.adafruit.com/an-illustrated-guide-to-shell-magic-typing-less-and-doing-more?view=all)
