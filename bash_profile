@@ -29,6 +29,7 @@ fi
 alias df='df -h '
 alias ls='ls -Gph'
 alias cd..='cd ..'  # fix typing error
+alias gitstatus='git remote update && git status'
 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
