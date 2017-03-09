@@ -124,6 +124,19 @@ over https on port `443`:
 
 	ln ~/Documents/Github/dotfiles/ssh_config ~/.ssh/config
 
+### OpenCV 3.2
+
+Once you have python installed, download the Windows OpenCV binaries. Copy `cv1.pyd` from the `build/python/2.7/x64`
+folder to where your python installed `pip` packages to. Mine was `/c/Python27/Lib/site-packages`. Then open a new
+`git-bash` terminal and run:
+
+    User@MyComputer / $ python
+    Python 2.7.13 (v2.7.13:a06454b1afa1, Dec 17 2016, 20:53:40) [MSC v.1500 64 bit (
+    AMD64)] on win32
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import cv2
+
+You should get no errors.
 
 ## Bash
 
