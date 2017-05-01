@@ -1,5 +1,33 @@
 # My Dot Files
 
+## bash
+
+Putting `motd` in `/etc/profile.d/` causes it to run on login.
+
+	kevin@Logan ~ $ ssh pi@fry.local
+	Last login: Sun Apr 30 20:42:12 2017 from fe80::434:1093:4b2a:4972%eth0
+	  __            
+	 / _|_ __ _   _ 
+	| |_| '__| | | |
+	|  _| |  | |_| |
+	|_| |_|   \__, |
+		  |___/ 
+
+	Sunday, 30 April 2017, 09:13:53 PM
+	Linux 4.9.24-v7+ armv7l GNU/Linux
+
+	Uptime.............: 0 days, 04h49m13s
+	Memory.............: 636 MB (Free) / 859 MB (Total)
+	Storage............: 1.9GB (Free) / 15GB (Total)
+	Load Averages......: 0.00, 0.00, 0.00 (1, 5, 15 min)
+	CPU Temperature....: 107 F
+	Running Processes..: 125
+	IP Addresses.......: 192.168.1.52
+
+
+
+## SSH
+
 This is my setup on various operating systems, you will need to adjust the paths for your
 system setups. In all cases, you will need `ssh` keys, so do:
 
