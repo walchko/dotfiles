@@ -7,7 +7,7 @@ if [ "$EUID" -eq 0 ]
 fi
 
 rm -f ~/.bashrc
-ln -s ~/.bashrc ~/github/dotfiles/linux_bashrc
+ln -s ~/github/dotfiles/linux_bashrc ~/.bashrc
 
 if [ -f "/etc/profile.d/sshpwd.sh" ]; then
   rm -f /etc/profile.d/sshpwd.sh
