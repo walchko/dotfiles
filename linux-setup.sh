@@ -9,14 +9,17 @@ fi
 rm -f ~/.bashrc
 ln -s ~/github/dotfiles/linux_bashrc ~/.bashrc
 
+sudo rm -f /etc/motd
+sudo touch /etc/motd
+
 if [ -f "/etc/profile.d/sshpwd.sh" ]; then
-  rm -f /etc/profile.d/sshpwd.sh
+  sudo rm -f /etc/profile.d/sshpwd.sh
 else
   echo "already removed sshpwd.sh"
 fi
 
 if [ ! -f "/etc/profile.d/motd.sh" ]; then
-  ln -s /home/pi/github/mote/software/motd /etc/profile.d/motd.sh
+  sudo ln -s /home/pi/github/dotfiles/motd /etc/profile.d/motd.sh
 else
   echo "already setup motd.sh"
 fi
