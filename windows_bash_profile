@@ -4,12 +4,16 @@
 
 # test
 
-alias python='winpty python.exe'
-alias ll='ls -l'
-alias ls='ls -F --color=auto --show-control-chars'
+alias python='winpty /c/Python27/python.exe'
+alias python3='winpty /c/Users/Kevin.Walchko/AppData/Local/Programs/Python/Python36/python.exe'
+alias pip='python -m pip'
+alias pip3='python3 -m pip'
+alias ll='ls -lh'
+alias ls='ls -Fh --color=auto --show-control-chars'
 alias gitstatus='git remote update && git status'
 alias node='winpty node.exe'
 
+EDITOR=atom
 SSH_ENV=$HOME/.ssh/environment
 
 # start the ssh-agent
