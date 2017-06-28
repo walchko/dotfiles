@@ -2,8 +2,7 @@
 #test -f ~/.profile && . ~/.profile
 #test -f ~/.bashrc && . ~/.bashrc
 
-# test
-
+export PATH=/c/Python27:/c/Python27/Scripts:$PATH
 alias python='winpty /c/Python27/python.exe'
 alias python3='winpty /c/Users/Kevin.Walchko/AppData/Local/Programs/Python/Python36/python.exe'
 alias pip='python -m pip'
@@ -44,3 +43,6 @@ DIR="\[\033[01;34m\]"
 END="\[\033[0m\]"
 
 export PS1="$USR\u@$HOST\h $DIR\W$END \$ "
+
+# for some stupid reason, bash starts at root level
+cd ~
