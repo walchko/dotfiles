@@ -8,12 +8,12 @@ if [ "$EUID" -eq 0 ]
   exit 1
 fi
 
-# if [[ $# -eq 0 ]] ; then
-#   echo "-------------------------------------"
-#   echo "Please supply a user name"
-#   echo "-------------------------------------"
-#   exit 1
-# fi
+# if no username given, default to me
+if [[ $# -eq 0 ]] ; then
+	NAME=walchko
+else
+	NAME=$1
+fi
 #
 #
 # echo ""
@@ -21,17 +21,28 @@ fi
 # echo ""
 #
 # NAME=$1
-#
-# git config --global user.name ${NAME}
-# git config --global user.email ${NAME}@users.noreply.github.com
-# git config --global push.default simple
+
+echo "update git"
+
+git config --global user.name ${NAME}
+git config --global user.email ${NAME}@users.noreply.github.com
+git config --global push.default simple
+
+# twine doesn't like ln -s, just do a cp
+FILE=~/Dropbox/pypirc
+if [[ -f ${FILE} ]] ; then
+	echo "created .pypirc file"
+	cp -f ~/Dropbox/pypirc ~/.pypirc
+else
+	echo "no dropbox found"
+fi
 
 echo ""
 echo "update bash_profile"
 echo ""
 
 rm -f ~/.bashrc
-ln -s ~/github/dotfiles/bash_profile ~/.bash_profile
+ln -sf ~/github/dotfiles/bash_profile ~/.bash_profile
 
 echo ""
 echo "ok ... you should be ready to go!"

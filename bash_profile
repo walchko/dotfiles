@@ -1,7 +1,6 @@
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export EDITOR=`which pico`
 
-#export PS1='\u@\h \W]\$ '
 
 USR="\[\033[01;32m\]"
 HOST="\[\033[01;35m\]"
@@ -10,16 +9,6 @@ END="\[\033[0m\]"
 
 export PS1="$USR\u@$HOST\h $DIR\W$END \$ "
 
-# https://github.com/magicmonty/bash-git-prompt/tree/master/themes
-#if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
-#    source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
-#fi
-
-# bash completion
-#if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#    . $(brew --prefix)/etc/bash_completion
-#fi
-
 # keep sensative info in dropbox
 TOKEN_FILE="/Users/${USER}/Dropbox/Share/kevin/tokens.sh"
 if [ -r ${TOKEN_FILE} ]; then
@@ -27,7 +16,7 @@ if [ -r ${TOKEN_FILE} ]; then
 fi
 
 alias df='df -h '
-alias ls='ls -Gph'
+alias ls='ls -aGph'
 alias cd..='cd ..'  # fix typing error
 alias gitstatus='git remote update && git status'
 
