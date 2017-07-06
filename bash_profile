@@ -19,6 +19,7 @@ alias df='df -h '
 alias ls='ls -aGph'
 alias cd..='cd ..'  # fix typing error
 alias gitstatus='git remote update && git status'
+alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
