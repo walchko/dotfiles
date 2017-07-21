@@ -1,4 +1,5 @@
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export EDITOR=`which pico`
 
 
