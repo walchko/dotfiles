@@ -19,6 +19,10 @@ Setup git bash, note I make these **hard** links on windows:
 So this setups the command prompt, sets up `ssh-agent` to run for windows openned and loads my ssh keys.
 Note I also renamed `My Documents` to just `Document` because spaces in a path name is *evil*.
 
+Fix editor:
+
+	git config core.editor notepad
+
 Also to ensure your `ssh` keys were added properly try one of these:
 
 	ssh-add -l
