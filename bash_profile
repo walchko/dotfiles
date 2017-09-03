@@ -1,7 +1,7 @@
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=$PATH:/Library/TeX/texbin
-export EDITOR=`which pico`
+export EDITOR=`command -v pico`
 
 
 USR="\[\033[01;32m\]"
