@@ -1,5 +1,6 @@
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH=$PATH:/Library/TeX/texbin
 export EDITOR=`which pico`
 
 
@@ -49,4 +50,8 @@ extract () {
 # -----------------------------------------------
 pip-upgrade-all() {
     pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
+}
+
+pip3-upgrade-all() {
+    pip3 list --outdated | cut -d' ' -f1 | xargs pip3 install --upgrade
 }
