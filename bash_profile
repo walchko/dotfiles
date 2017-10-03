@@ -22,6 +22,7 @@ alias ls='ls -aGph'
 alias cd..='cd ..'  # fix typing error
 alias gitstatus='git remote update && git status'
 alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
+alias github-check="ssh-keygen -l -E md5 -f ~/.ssh/id_rsa.pub"
 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
