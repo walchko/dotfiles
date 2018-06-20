@@ -51,7 +51,7 @@ extract () {
 # fully update pip
 # -----------------------------------------------
 pip2-upgrade-all() {
-    pip2 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip install --upgrade --user
+    pip2 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip2 install --upgrade --user
 }
 
 pip3-upgrade-all() {
