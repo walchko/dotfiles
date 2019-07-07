@@ -15,9 +15,14 @@ for d in */; do
   echo "========================"
   cd ${d%/}
   if [[ -d ".git" ]]; then
-    git pull
-    git submodule update --remote --recursive
-    git status
+    repo=`git config --get remote.origin.url`
+    gitpath="git@github.com:"
+    if [[ $repo =~ $gitpath ]]; then
+      echo "${repo}"
+      git pull
+      git submodule update --remote --recursive
+      git status
+  fi
   else
     echo " ${d%/} is not a Git repo"
   fi
