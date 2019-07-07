@@ -16,7 +16,10 @@ for d in */; do
   cd ${d%/}
   if [[ -d ".git" ]]; then
     git pull
+    git submodule update --remote --recursive
     git status
+  else
+    echo " ${d%/} is not a Git repo"
   fi
   cd ..
   echo ""
