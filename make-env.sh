@@ -6,15 +6,18 @@ if [[ $# -ne 1 ]] ; then
   exit 1
 fi
 
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+mkdir -p $HOME/pyvenv/$1
 
-# delete existing
-rmvirtualenv $1
 
-# create new one
-mkvirtualenv $1
-workon $1
-./setup-python-virtenv.sh
-deactivate
+# export WORKON_HOME=$HOME/.virtualenvs
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+# source /usr/local/bin/virtualenvwrapper.sh
+#
+# # delete existing
+# rmvirtualenv $1
+#
+# # create new one
+# mkvirtualenv $1
+# workon $1
+# ./setup-python-virtenv.sh
+# deactivate

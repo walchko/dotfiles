@@ -17,7 +17,8 @@ for d in */; do
   if [[ -d ".git" ]]; then
     repo=`git config --get remote.origin.url`
     gitpath="git@github.com:"
-    if [[ $repo =~ $gitpath ]]; then
+    #if [[ $repo =~ $gitpath ]]; then
+    if [[ "1" ]]; then
       echo "${repo}"
       git pull
       git submodule update --remote --recursive
