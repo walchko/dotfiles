@@ -70,3 +70,6 @@ echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 
 # ros
 #source /opt/ros/melodic/setup.bash
+
+# gecko
+export LD_LIBRARY_PATH=/opt/gecko/gecko/lib:$LD_LIBRARY_PATH
