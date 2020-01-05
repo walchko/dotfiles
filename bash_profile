@@ -62,4 +62,4 @@ pip3-upgrade-all() {
 #export WORKON_HOME=$HOME/.virtualenvs
 #export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 #source /usr/local/bin/virtualenvwrapper.sh
-source ~/pyvenv/cv/bin/activate
+source ~/venv/bin/activate
