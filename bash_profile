@@ -50,16 +50,21 @@ extract () {
 
 # fully update pip
 # -----------------------------------------------
-pip2-upgrade-all() {
-    pip2 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip2 install --upgrade 
+pip-upgrade-all() {
+    pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --upgrade
 }
 
-pip3-upgrade-all() {
-    pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --upgrade 
-}
+# pip3-upgrade-all() {
+#     pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --upgrade
+# }
 
 # virtualenv and virtualenvwrapper
 #export WORKON_HOME=$HOME/.virtualenvs
 #export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 #source /usr/local/bin/virtualenvwrapper.sh
+
+echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 source ~/venv/bin/activate
+
+# source $HOME/.poetry/env
+export PATH="$HOME/.poetry/bin:$PATH"
