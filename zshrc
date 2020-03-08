@@ -27,3 +27,10 @@ alias df='df -h '
 alias ls='ls -aGph'
 alias cd..='cd ..'  # fix typing error
 alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
+
+# handle pasted urls
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
