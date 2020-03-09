@@ -25,10 +25,17 @@ echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 export PATH="$HOME/.poetry/bin":$PATH
 
 alias df='df -h '
-alias ls='ls -ph --color=auto '
 alias cd..='cd ..'  # fix typing error
 alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
 
+case `uname` in
+  Darwin)
+    alias ls='ls -pGh '
+  ;;
+  Linux)
+    alias ls='ls -ph --color=auto '
+  ;;
+esac
 
 # handle pasted urls
 autoload -Uz bracketed-paste-magic
