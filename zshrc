@@ -5,7 +5,7 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/Users/kevin/.zshrc'
+# zstyle :compinstall filename '/Users/kevin/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -21,12 +21,14 @@ source ~/venv/bin/activate
 echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 
 # source $HOME/.poetry/env
-export PATH="$HOME/.poetry/bin:$PATH"
+#export PATH=/usr/local/bin:/usr/bin:/bin:$PATH
+export PATH="$HOME/.poetry/bin":$PATH
 
 alias df='df -h '
-alias ls='ls -aGph'
+alias ls='ls -ph --color=auto '
 alias cd..='cd ..'  # fix typing error
 alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
+
 
 # handle pasted urls
 autoload -Uz bracketed-paste-magic
