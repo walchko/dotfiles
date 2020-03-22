@@ -1,4 +1,5 @@
 #!/bin/bash
+# MIT Kevin Walchko 2016
 
 # check if we are root
 if [ "$EUID" -eq 0 ]
