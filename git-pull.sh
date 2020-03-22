@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# MIT Kevin Walchko 2016
 # Update a bunch of git repos on command
 #
 
