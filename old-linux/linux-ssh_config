@@ -1,8 +1,0 @@
-Host bitbucket.org
- Hostname altssh.bitbucket.org
- IdentityFile ~/.ssh/bitbucket_rsa
- Port 443
-Host github.com
- Hostname ssh.github.com
- IdentityFile /c/Users/Kevin.Walchko/.ssh/github_rsa
- Port 443
