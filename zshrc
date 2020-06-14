@@ -17,12 +17,18 @@ function pip-upgrade-all() {
 
 PROMPT="%F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# "
 
+#source ~/venv/bin/activate
+#echo " ** to exit" `python --version` "venv type \"deactivate\" **"
+
+# brew python
+export LDFLAGS="-L/usr/local/opt/python@3.8/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/python@3.8/lib/pkgconfig"
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+
+export PATH="$HOME/.poetry/bin":$PATH
+
 source ~/venv/bin/activate
 echo " ** to exit" `python --version` "venv type \"deactivate\" **"
-
-# source $HOME/.poetry/env
-#export PATH=/usr/local/bin:/usr/bin:/bin:$PATH
-export PATH="$HOME/.poetry/bin":$PATH
 
 alias df='df -h '
 alias cd..='cd ..'  # fix typing error
