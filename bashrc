@@ -66,7 +66,7 @@ pip-upgrade-all() {
 # export LD_LIBRARY_PATH=$HOME/.local/lib/:$LD_LIBRARY_PATH
 
 # use python venv
-source /home/kevin/.venv/bin/activate
+source /home/$USER/venv/bin/activate
 echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 
 # ros
