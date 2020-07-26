@@ -15,7 +15,7 @@ TOTMEM=$((`cat /proc/meminfo | grep MemTotal | awk {'print $2'}`/1024))
 #  IP=`/sbin/ifconfig eth0 | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1`
 #fi
 #IP=""
-ifaces=("usb0" "eth0" "wlan0")
+ifaces=("eth0" "wlan0")
 for eth in "${ifaces[@]}"
 do
 #  IP=`/sbin/ifconfig ${eth} | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1`
@@ -24,7 +24,8 @@ do
 #  else
 #    break
 #  fi
-  IP=$(/sbin/ifconfig ${eth} | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1)
+  # IP=$(/sbin/ifconfig ${eth} | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1)
+  IP=$(/sbin/ifconfig ${eth} | /bin/grep "inet " | /bin/sed -e 's/^[ \t]*//' | /usr/bin/cut -d " " -f2)
   #if [[ $? ]]; then
   if [[ ! -z "${IP}" ]]; then
   #  echo "found ${eth}"
@@ -54,4 +55,3 @@ Running Processes..: `ps ax | wc -l | tr -d " "`
 IP Addresses.......: ${IP}
 
 $(tput sgr0)"
-
