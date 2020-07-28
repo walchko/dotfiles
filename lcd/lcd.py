@@ -3,7 +3,7 @@
 
 # This is run using the system python, so just use python3
 # make sure to install:
-# pip install -U Adafruit-SSD1306 pillow netifaces psutil
+# pip install -U adafruit-circuitpython-ssd1306 pillow netifaces psutil
 
 import netifaces as nf
 import psutil as ps
