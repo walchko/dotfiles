@@ -1,4 +1,8 @@
+![](https://cdn-learn.adafruit.com/assets/assets/000/042/204/small360/raspberry_pi_3527_top_demo_ORIG.jpg?1496265779)
+
 # LCD Install
+
+Adafruit [OLED I2C display](https://www.adafruit.com/product/3527) I use on various Pi's.
 
 ## Setup
 
