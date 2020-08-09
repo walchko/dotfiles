@@ -59,7 +59,7 @@ fi
 # -----------------------------------------------
 pip-upgrade-all() {
     # pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
-    pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --upgrade 
+    pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --use-feature=2020-resolver --upgrade 
 }
 
 # add my .local
