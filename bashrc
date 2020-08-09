@@ -59,7 +59,7 @@ fi
 # -----------------------------------------------
 pip-upgrade-all() {
     # pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
-    pip list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip install --upgrade 
+    pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --upgrade 
 }
 
 # add my .local
@@ -67,11 +67,13 @@ pip-upgrade-all() {
 
 # use python venv
 source /home/$USER/venv/bin/activate
-echo " ** to exit" `python --version` "venv type \"deactivate\" **"
+echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
 
 # ros
-#source /opt/ros/melodic/setup.bash
+if [[ -d "/opt/ros" ]]; then
+   source /opt/ros/foxy/setup.bash
+fi
 
 # gecko
-export LD_LIBRARY_PATH=/opt/gecko/gecko/lib:/opt/gecko/lib:$LD_LIBRARY_PATH
-export PATH=/opt/gecko/bin:$PATH
+#export LD_LIBRARY_PATH=/opt/gecko/gecko/lib:/opt/gecko/lib:$LD_LIBRARY_PATH
+#export PATH=/opt/gecko/bin:$PATH
