@@ -73,6 +73,7 @@ echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
 # ros
 if [[ -d "/opt/ros" ]]; then
    source /opt/ros/foxy/setup.bash
+   export LANG=en_US.UTF-8
 fi
 
 # gecko
