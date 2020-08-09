@@ -64,6 +64,7 @@ pip-upgrade-all() {
 
 # add my .local
 # export LD_LIBRARY_PATH=$HOME/.local/lib/:$LD_LIBRARY_PATH
+export PATH=/home/$USER/.local/bin:$PATH
 
 # use python venv
 source /home/$USER/venv/bin/activate
