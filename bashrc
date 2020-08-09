@@ -43,6 +43,7 @@ alias cd..='cd ..'  # fix typing error
 alias ls='ls -h --color=auto'
 alias grep='grep --color=auto'
 alias gitstatus='git remote update && git status'
+# alias pip3='pip3 --use-feature=2020-resolver'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
