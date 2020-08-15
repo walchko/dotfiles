@@ -27,8 +27,8 @@ export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 export PATH="$HOME/.poetry/bin":$PATH
 
-source ~/venv/bin/activate
-echo " ** to exit" `python --version` "venv type \"deactivate\" **"
+#source ~/venv/bin/activate
+#echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 
 alias df='df -h '
 alias cd..='cd ..'  # fix typing error
@@ -52,4 +52,7 @@ zle -N self-insert url-quote-magic
 
 if [[ -d "/opt/ros" ]]; then
     . /opt/ros/foxy/setup.zsh
+else
+    source ~/venv/bin/activate
+    echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 fi
