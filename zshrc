@@ -49,3 +49,7 @@ zle -N bracketed-paste bracketed-paste-magic
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
+
+if [[ -d "/opt/ros" ]]; then
+    . /opt/ros/foxy/setup.zsh
+fi
