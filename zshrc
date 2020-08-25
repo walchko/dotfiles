@@ -12,7 +12,12 @@ compinit
 # End of lines added by compinstall
 
 function pip-upgrade-all() {
-    pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --upgrade
+    # pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --upgrade
+    for pkg in $(pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2')
+    do
+        # echo ">> ${pkg}"
+        pip3 install --upgrade ${pkg}
+    done
 }
 
 PROMPT="%F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# "
