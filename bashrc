@@ -73,8 +73,10 @@ pip-upgrade-all() {
 export PATH=/home/$USER/.local/bin:$PATH
 
 # use python venv
-source /home/$USER/venv/bin/activate
-echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
+if [[ -d "/home/$USER/venv" ]]; then
+    source /home/$USER/venv/bin/activate
+    echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
+fi
 
 # ros
 if [[ -d "/opt/ros" ]]; then
