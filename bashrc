@@ -68,9 +68,9 @@ pip-upgrade-all() {
     done
 }
 
-# add my .local
+# add my poetry
 # export LD_LIBRARY_PATH=$HOME/.local/lib/:$LD_LIBRARY_PATH
-#export PATH=/home/$USER/.local/bin:$PATH
+export PATH=$PATH:/home/$USER/.poetry/bin
 
 # use python venv
 if [[ -d "/home/$USER/venv" ]]; then
