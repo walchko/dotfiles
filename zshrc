@@ -48,6 +48,9 @@ case `uname` in
   ;;
 esac
 
+# stop making zsh ask if I want to delete things
+setopt rmstarsilent
+
 # handle pasted urls
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
