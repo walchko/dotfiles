@@ -22,18 +22,7 @@ function pip-upgrade-all() {
 
 PROMPT="%F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# "
 
-#source ~/venv/bin/activate
-#echo " ** to exit" `python --version` "venv type \"deactivate\" **"
-
-# brew python
-export LDFLAGS="-L/usr/local/opt/python@3.8/lib"
-export PKG_CONFIG_PATH="/usr/local/opt/python@3.8/lib/pkgconfig"
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-
-export PATH="$HOME/.poetry/bin":$PATH
-
-#source ~/venv/bin/activate
-#echo " ** to exit" `python --version` "venv type \"deactivate\" **"
+export PATH=$PATH:"$HOME/.poetry/bin"
 
 alias df='df -h '
 alias cd..='cd ..'  # fix typing error
@@ -42,6 +31,11 @@ alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
 case `uname` in
   Darwin)
     alias ls='ls -pGh '
+
+    # brew python
+    export LDFLAGS="-L/usr/local/opt/python@3.8/lib"
+    export PKG_CONFIG_PATH="/usr/local/opt/python@3.8/lib/pkgconfig"
+    export PATH="/usr/local/opt/python@3.8/bin:$PATH"
   ;;
   Linux)
     alias ls='ls -ph --color=auto '
