@@ -54,7 +54,9 @@ zle -N self-insert url-quote-magic
 
 if [[ -d "/opt/ros" ]]; then
     . /opt/ros/foxy/setup.zsh
+    . ${HOME}/venv/bin/activate
+    echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 else
-    source ~/venv/bin/activate
+    . ${HOME}/venv/bin/activate
     echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 fi
