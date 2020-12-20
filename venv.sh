@@ -27,13 +27,13 @@ pip install -U docker-compose
 # handle my libraries
 setup_mine ()
 {
+    echo "------------------------------------"
     if pip list | grep ${1}; then
         echo ">> ${1} is already installed"
         return
     fi
     if [ -d ~/github/${1} ]; then
         cd ~/github/${1}
-        echo "------------------------------------"
         if [ -f "poetry.lock" ]; then
             echo ">> found lock, rm ${1}/poetry.lock"
             rm -f poetry.lock
