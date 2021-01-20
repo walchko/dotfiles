@@ -33,9 +33,9 @@ case `uname` in
     alias ls='ls -pGh '
 
     # brew python
-    export LDFLAGS="-L/usr/local/opt/python@3.8/lib"
-    export PKG_CONFIG_PATH="/usr/local/opt/python@3.8/lib/pkgconfig"
-    export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/python@3.9/lib"
+    export PKG_CONFIG_PATH="/usr/local/opt/python@3.9/lib/pkgconfig"
+    export PATH="/usr/local/opt/python@3.9/bin:$PATH"
   ;;
   Linux)
     alias ls='ls -ph --color=auto '
