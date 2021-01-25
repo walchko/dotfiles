@@ -60,3 +60,5 @@ else
     . ${HOME}/venv/bin/activate
     echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
