@@ -20,7 +20,7 @@ function pip-upgrade-all() {
     done
 }
 
-PROMPT="%F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# "
+
 
 export PATH=$PATH:"$HOME/.poetry/bin"
 
@@ -30,6 +30,7 @@ alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
 
 case `uname` in
   Darwin)
+    PROMPT="%F{white} %F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# "
     alias ls='ls -pGh '
 
     # brew python
@@ -39,6 +40,7 @@ case `uname` in
   ;;
   Linux)
     alias ls='ls -ph --color=auto '
+    PROMPT="%F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# "
   ;;
 esac
 
