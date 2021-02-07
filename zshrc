@@ -40,7 +40,7 @@ case `uname` in
   ;;
   Linux)
     alias ls='ls -ph --color=auto '
-    PROMPT='\U1f427 %F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# '
+    PROMPT=$'\U1f427 %F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# '
   ;;
 esac
 
