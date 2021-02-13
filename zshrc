@@ -64,3 +64,4 @@ else
 fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
+export EDITOR=nano
