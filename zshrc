@@ -22,7 +22,7 @@ function pip-upgrade-all() {
 
 
 
-export PATH=$PATH:"$HOME/.poetry/bin"
+#export PATH=$PATH:"$HOME/.poetry/bin"
 
 alias df='df -h '
 alias cd..='cd ..'  # fix typing error
@@ -36,7 +36,7 @@ case `uname` in
     # brew python
     export LDFLAGS="-L/usr/local/opt/python@3.9/lib"
     export PKG_CONFIG_PATH="/usr/local/opt/python@3.9/lib/pkgconfig"
-    export PATH="/usr/local/opt/python@3.9/bin:$PATH"
+    export PATH="/usr/local/opt/python@3.9/bin:$PATH:/usr/local/sbin"
   ;;
   Linux)
     alias ls='ls -ph --color=auto '
