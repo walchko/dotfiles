@@ -70,7 +70,7 @@ pip-upgrade-all() {
 
 # add my poetry
 # export LD_LIBRARY_PATH=$HOME/.local/lib/:$LD_LIBRARY_PATH
-export PATH=$PATH:/home/$USER/.poetry/bin
+# export PATH=$PATH:/home/$USER/.poetry/bin
 
 # use python venv
 if [[ -d "/home/$USER/venv" ]]; then
@@ -87,3 +87,5 @@ fi
 # gecko
 #export LD_LIBRARY_PATH=/opt/gecko/gecko/lib:/opt/gecko/lib:$LD_LIBRARY_PATH
 #export PATH=/opt/gecko/bin:$PATH
+
+export EDITOR=nano

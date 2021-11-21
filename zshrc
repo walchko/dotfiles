@@ -63,5 +63,5 @@ else
     echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 fi
 
-export PATH="$HOME/.poetry/bin:$PATH"
+# export PATH="$HOME/.poetry/bin:$PATH"
 export EDITOR=nano

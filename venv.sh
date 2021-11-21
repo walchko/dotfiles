@@ -4,7 +4,9 @@
 set -e
 
 # python
-pip install -U pip setuptools wheel pytest psutil colorama attrs twine
+pip install -U pip setuptools wheel
+
+pip install -U poetry pytest psutil colorama attrs twine
 
 # basic science stuff
 pip install -U jupyter matplotlib numpy simplejson pyyaml
