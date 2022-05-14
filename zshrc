@@ -59,7 +59,7 @@ if [[ -d "/opt/ros" ]]; then
     . ${HOME}/venv/bin/activate
     echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 else
-    . ${HOME}/venv/bin/activate
+    . ${HOME}/venvs/py/bin/activate
     echo " ** to exit" `python --version` "venv type \"deactivate\" **"
 fi
 
