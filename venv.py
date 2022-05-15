@@ -5,6 +5,12 @@
 # Copyright (c) 2016 Kevin Walchko
 # see LICENSE for full details
 ##############################################
+
+"""
+build env ... look here to use venv api:
+https://docs.python.org/3/library/venv.html
+"""
+
 import subprocess     # Popen
 # import os             # make directories, change current dir, etc
 import pathlib        # folder finding
