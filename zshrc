@@ -20,6 +20,25 @@ function pip-upgrade-all() {
     done
 }
 
+function changevenv () {
+    if [ $# -eq 0 ]; then
+        echo "\n!! Please select a new venv: changevenv py\n"
+        return
+    fi
+
+    DIR="$HOME/venvs/$1"
+    if [ -d "$DIR" ]; then
+        if typeset -f deactivate > /dev/null ; then
+            deactivate
+        fi
+
+        . "$DIR/bin/activate"
+
+        echo "\n>> SUCCESS! Changed to venv $1\n"
+    else
+        echo "\n!! Sorry, $1 doesn't exist, choose a new venv\n"
+    fi
+}
 
 
 #export PATH=$PATH:"$HOME/.poetry/bin"
@@ -61,6 +80,7 @@ if [[ -d "/opt/ros" ]]; then
 else
     . ${HOME}/venvs/py/bin/activate
     echo " ** to exit" `python --version` "venv type \"deactivate\" **"
+    echo " ** or do \"changevenv [new venv]\" to switch **"
 fi
 
 # export PATH="$HOME/.poetry/bin:$PATH"
