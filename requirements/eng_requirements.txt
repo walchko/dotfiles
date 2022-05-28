@@ -8,6 +8,7 @@ colorama
 attrs
 twine
 jupyterlab
+ipywidgets
 matplotlib
 numpy
 simplejson
@@ -25,4 +26,5 @@ sympy
 torch
 torchvision
 torchinfo
+squaternion
 
