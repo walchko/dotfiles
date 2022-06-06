@@ -13,7 +13,7 @@ matplotlib
 numpy
 simplejson
 pyyaml
-opencv-python
+opencv-contrib-python
 imageio
 pillow
 pyheif-pillow-opener
@@ -26,5 +26,3 @@ sympy
 torch
 torchvision
 torchinfo
-squaternion
-
