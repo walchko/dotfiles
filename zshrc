@@ -40,9 +40,6 @@ function changevenv () {
     fi
 }
 
-
-#export PATH=$PATH:"$HOME/.poetry/bin"
-
 alias df='df -h '
 alias cd..='cd ..'  # fix typing error
 alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
@@ -73,15 +70,13 @@ zle -N bracketed-paste bracketed-paste-magic
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
-if [[ -d "/opt/ros" ]]; then
-    . /opt/ros/foxy/setup.zsh
-    . ${HOME}/venv/bin/activate
-    echo " ** to exit" `python --version` "venv type \"deactivate\" **"
-else
-    . ${HOME}/venvs/py/bin/activate
-    echo " ** to exit" `python --version` "venv type \"deactivate\" **"
-    echo " ** or do \"changevenv [new venv]\" to switch **"
+if [[ -d "/opt/ros/humble" ]]; then
+    . /opt/ros/humble/setup.zsh
 fi
 
-# export PATH="$HOME/.poetry/bin:$PATH"
+. ${HOME}/venvs/py/bin/activate
+echo " ** to exit" `python --version` "venv type \"deactivate\" **"
+echo " ** or do \"changevenv [new venv]\" to switch **"
+
+
 export EDITOR=nano
