@@ -49,4 +49,4 @@ CPU Temperature....: ${W}${CPUTEMP} F${R}
 Running Processes..: ${W}`ps ax | wc -l | tr -d " "`${R}
 LAN  IP Addr.......: ${W}${IPLAN}${R}
 WiFi IP Addr.......: ${W}${IPWLAN}
-"
+${W}s"
