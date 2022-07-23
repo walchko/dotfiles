@@ -40,6 +40,12 @@ function changevenv () {
     fi
 }
 
+function enableros() {
+  if [[ -d "/opt/ros/humble" ]]; then
+      . /opt/ros/humble/setup.zsh
+  fi
+}
+
 alias df='df -h '
 alias cd..='cd ..'  # fix typing error
 alias sshraspberrypi="ssh -o UserKnownHostsFile=/dev/null pi@raspberrypi.local"
@@ -70,9 +76,9 @@ zle -N bracketed-paste bracketed-paste-magic
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
-if [[ -d "/opt/ros/humble" ]]; then
-    . /opt/ros/humble/setup.zsh
-fi
+#if [[ -d "/opt/ros/humble" ]]; then
+#    . /opt/ros/humble/setup.zsh
+#fi
 
 . ${HOME}/venvs/py/bin/activate
 echo " ** to exit" `python --version` "venv type \"deactivate\" **"
