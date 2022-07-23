@@ -6,52 +6,46 @@ let mins=$((${upSeconds}/60%60))
 let hours=$((${upSeconds}/3600%24))
 let days=$((${upSeconds}/86400))
 
-# get info
+# get info ========================
 UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
 FREEMEM=$((`cat /proc/meminfo | grep MemFree | awk {'print $2'}`/1024))
 TOTMEM=$((`cat /proc/meminfo | grep MemTotal | awk {'print $2'}`/1024))
-#IP=`/sbin/ifconfig eth0 | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1`
-#if [[ -z "${IP}" ]]; then
-#  IP=`/sbin/ifconfig eth0 | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1`
-#fi
-#IP=""
-ifaces=("eth0" "wlan0")
-for eth in "${ifaces[@]}"
-do
-#  IP=`/sbin/ifconfig ${eth} | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1`
-#  if [[ -z "${i}" ]]; then
-#    echo ""
-#  else
-#    break
-#  fi
-  # IP=$(/sbin/ifconfig ${eth} | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1)
-  IP=$(/sbin/ifconfig ${eth} | /bin/grep "inet " | /bin/sed -e 's/^[ \t]*//' | /usr/bin/cut -d " " -f2)
-  #if [[ $? ]]; then
-  if [[ ! -z "${IP}" ]]; then
-  #  echo "found ${eth}"
-    break
-  #else
-  #  echo "not found ${eth}"
-  fi
-done
 
-DF=`df -h | grep /dev/root | awk {'print $3 "B (Free) / " $2 "B (Total)"'}`
+IPLAN=$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
+if [[ -z "${IPLAN}" ]]; then
+    IPLAN="None"
+fi
+IPWLAN=$(ip addr show wlan0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
+if [[ -z "${IPWLAN}" ]]; then
+    IPWLAN="None"
+fi
+
+DF=`df -h | grep /dev/mmcblk0p2 | awk {'print $3 "B (Free) / " $2 "B (Total)"'}`
 CPUTEMP=$((`cat /sys/class/thermal/thermal_zone0/temp`/1000*9/5+32))
 
 # get the load averages
 read one five fifteen rest < /proc/loadavg
 
+# set colors =========================
+W="\e[0;39m"
+R="\e[1;31m"
+G="\e[1;32m"
+
+# ======================================
+
 figlet `uname -n`
-echo "$(tput setaf 2)
+
+echo -e "${G}
 `date +"%A, %e %B %Y, %r"`
-`uname -srmo`$(tput setaf 1)
-
-Uptime.............: ${UPTIME}
-Memory.............: ${FREEMEM} MB (Free) / ${TOTMEM} MB (Total)
-Storage............: ${DF}
-Load Averages......: ${one}, ${five}, ${fifteen} (1, 5, 15 min)
-CPU Temperature....: ${CPUTEMP} F
-Running Processes..: `ps ax | wc -l | tr -d " "`
-IP Addresses.......: ${IP}
-
-$(tput sgr0)"
+`uname -srmo`
+`lsb_release -d`
+`lsb_release -c`
+${R}
+Uptime.............: ${W}${UPTIME}${R}
+Memory.............: ${W}${FREEMEM} MB (Free) / ${TOTMEM} MB (Total)${R}
+Storage............: ${W}${DF}${R}
+Load Averages......: ${W}${one}, ${five}, ${fifteen} (1, 5, 15 min)${R}
+CPU Temperature....: ${W}${CPUTEMP} F${R}
+Running Processes..: ${W}`ps ax | wc -l | tr -d " "`${R}
+LAN  IP Addr.......: ${W}${IPLAN}${R}
+WiFi IP Addr.......: ${W}${IPWLAN}"
