@@ -48,5 +48,5 @@ Load Averages......: ${W}${one}, ${five}, ${fifteen} (1, 5, 15 min)${R}
 CPU Temperature....: ${W}${CPUTEMP} F${R}
 Running Processes..: ${W}`ps ax | wc -l | tr -d " "`${R}
 LAN  IP Addr.......: ${W}${IPLAN}${R}
-WiFi IP Addr.......: ${W}${IPWLAN}
-${W}s"
+WiFi IP Addr.......: ${W}${IPWLAN}${W}"
+echo "  "
