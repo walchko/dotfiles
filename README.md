@@ -6,6 +6,7 @@ Just some dotfiles to help setup bash on macOS and Linux.
 - `linux-setup-motd.sh`: sym links `/etc/profile.d/motd` to this `motd`
 - `bashrc` and `zshrc` files for those shells
 
+
 # MIT License
 
 *Copyright (c) 2016 Kevin J. Walchko*
