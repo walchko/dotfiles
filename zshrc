@@ -63,6 +63,7 @@ case `uname` in
   Linux)
     umask 0022 # fix permissions to 644
     alias ls='ls -ph --color=auto '
+    alias git-clone='git clone --config core.filemode=false '
     PROMPT=$'\U1f427 %F{green}%n@%F{magenta}%m %F{blue}%1~ %f%# '
   ;;
 esac
