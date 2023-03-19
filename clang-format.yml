@@ -1,0 +1,16 @@
+---
+Language:        Cpp
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+AlignConsecutiveAssignments:
+  Enabled:         true
+  AcrossEmptyLines: true
+  AcrossComments:  false
+  AlignCompound:   false
+  PadOperators:    true
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+# BraceWrapping:
+#   BeforeElse:      true
+BreakBeforeBraces: Custom
+BraceWrapping:
+  BeforeElse: true
+IndentPPDirectives: BeforeHash
