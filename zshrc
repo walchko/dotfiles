@@ -56,9 +56,10 @@ case `uname` in
     alias ls='ls -pGh '
 
     # brew python
-    export LDFLAGS="-L/usr/local/opt/python@3.10/lib"
-    export PKG_CONFIG_PATH="/usr/local/opt/python@3.10/lib/pkgconfig"
-    export PATH="/usr/local/opt/python@3.10/bin:$PATH:/usr/local/sbin"
+    PYTHON_VER="python@3.11"
+    export LDFLAGS="-L/usr/local/opt/${PYTHON_VER}/lib"
+    export PKG_CONFIG_PATH="/usr/local/opt/${PYTHON_VER}/lib/pkgconfig"
+    export PATH="/usr/local/opt/${PYTHON_VER}/libexec/bin:$PATH:/usr/local/sbin"
   ;;
   Linux)
     umask 0022 # fix permissions to 644
