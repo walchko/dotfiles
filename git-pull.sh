@@ -2,7 +2,7 @@
 # MIT Kevin Walchko 2016
 # Update a bunch of git repos on command
 #
-
+# stop on errors
 set -e
 
 # get a list of non-hidden directories
@@ -16,12 +16,12 @@ for d in */; do
   cd ${d%/}
   if [[ -d ".git" ]]; then
     repo=`git config --get remote.origin.url`
-    gitpath="git@github.com:"
+    # gitpath="git@github.com:"
     #if [[ $repo =~ $gitpath ]]; then
     if [[ "1" ]]; then
       echo "${repo}"
       git pull
-      git submodule update --remote --recursive
+    #   git submodule update --remote --recursive
       git status
   fi
   else
