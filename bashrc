@@ -43,18 +43,17 @@ alias cd..='cd ..'  # fix typing error
 alias ls='ls -h --color=auto'
 alias grep='grep --color=auto'
 alias gitstatus='git remote update && git status'
-# alias pip3='pip3 --use-feature=2020-resolver'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+# if ! shopt -oq posix; then
+#   if [ -f /usr/share/bash-completion/bash_completion ]; then
+#     . /usr/share/bash-completion/bash_completion
+#   elif [ -f /etc/bash_completion ]; then
+#     . /etc/bash_completion
+#   fi
+# fi
 
 # fully update pip
 # -----------------------------------------------
@@ -76,13 +75,14 @@ pip-upgrade-all() {
 if [[ -d "/home/$USER/venv" ]]; then
     source /home/$USER/venv/bin/activate
     echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
+    echo " ** or do \"changevenv [new venv]\" to switch **"
 fi
 
 # ros
-if [[ -d "/opt/ros" ]]; then
-   source /opt/ros/foxy/setup.bash
-   export LANG=en_US.UTF-8
-fi
+# if [[ -d "/opt/ros" ]]; then
+#    source /opt/ros/foxy/setup.bash
+#    export LANG=en_US.UTF-8
+# fi
 
 # gecko
 #export LD_LIBRARY_PATH=/opt/gecko/gecko/lib:/opt/gecko/lib:$LD_LIBRARY_PATH
