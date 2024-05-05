@@ -25,22 +25,30 @@ shopt -s checkwinsize
 
 
 # setup prompt
-
-USR="\[\033[01;32m\]"
-HOST="\[\033[01;35m\]"
-DIR="\[\033[01;34m\]"
+USR="\[\033[32m\]"
+HOST="\[\033[35m\]"
+DIR="\[\033[34m\]"
 END="\[\033[0m\]"
 
-export PS1="$USR\u@$HOST\h $DIR\W$END \$ "
+case `uname` in
+    Darwin)
+        export PS1=" $USR\u@$HOST\h $DIR\W$END \$ "
+    ;;
+    Linux)
+        umask 0022 # fix permissions to 644
+        export PS1="\U1f427 $USR\u@$HOST\h $DIR\W$END \$ "
+    ;;
+esac
+
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # aliases
 alias df='df -h '
-alias ls='ls -Gph'
+# alias ls='ls -Gph'
+alias ls='ls -hG --color=auto'
 alias cd..='cd ..'  # fix typing error
-alias ls='ls -h --color=auto'
 alias grep='grep --color=auto'
 alias gitstatus='git remote update && git status'
 
@@ -72,11 +80,39 @@ pip-upgrade-all() {
 # export PATH=$PATH:/home/$USER/.poetry/bin
 
 # use python venv
-if [[ -d "/home/$USER/venv" ]]; then
-    source /home/$USER/venv/bin/activate
-    echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
-    echo " ** or do \"changevenv [new venv]\" to switch **"
-fi
+# if [[ -d "/home/$USER/venvs" ]]; then
+#     source /home/$USER/venvs/py/bin/activate
+#     echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
+#     echo " ** or do \"changevenv [new venv]\" to switch **"
+# elif [[ -d "/Users/$USER/venvs" ]]; then
+#     source /Users/$USER/venvs/py/bin/activate
+#     echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
+#     echo " ** or do \"changevenv [new venv]\" to switch **"
+# fi
+
+function changevenv () {
+    if [ $# -eq 0 ]; then
+        echo -e "\n!! Please select a new venv: changevenv py\n"
+        return
+    fi
+
+    DIR="$HOME/venvs/$1"
+    if [ -d "$DIR" ]; then
+        if typeset -f deactivate > /dev/null ; then
+            deactivate
+        fi
+
+        . "$DIR/bin/activate"
+
+        echo -e "\n>> SUCCESS! Changed to venv $1\n"
+    else
+        echo -e "\n!! Sorry, $1 doesn't exist, choose a new venv\n"
+    fi
+}
+
+. ${HOME}/venvs/py/bin/activate
+echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
+echo " ** or do \"changevenv [new venv]\" to switch **"
 
 # ros
 # if [[ -d "/opt/ros" ]]; then
@@ -89,3 +125,4 @@ fi
 #export PATH=/opt/gecko/bin:$PATH
 
 export EDITOR=nano
+export SHELL=/usr/local/bin/bash
