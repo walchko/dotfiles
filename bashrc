@@ -23,20 +23,36 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-
-# setup prompt
-USR="\[\033[32m\]"
-HOST="\[\033[35m\]"
-DIR="\[\033[34m\]"
-END="\[\033[0m\]"
+ID=`id -u`
+YELLOW_COLOR='\033[0;33m'
+RESET_COLOR='\033[0m'
+# if [ `uname` == "Darwin" ]; then
+#     # echo `uname`
+#     HOST_COLOR="\[\033[${LIGHT_PURPLE_COLOR}\]"
+#     USER_COLOR="\[\033[${PURPLE_COLOR}\]"
+if [ "$ID" == "0" ]; then
+    HOST_COLOR='\[\033[1;91m\]'
+    USER_COLOR='\[\033[0;31m\]'
+else
+    HOST_COLOR='\[\033[1;94m\]'
+    USER_COLOR='\[\033[0;34m\]'
+fi
 
 case `uname` in
     Darwin)
-        export PS1=" $USR\u@$HOST\h $DIR\W$END \$ "
+        # apple aliases
+        alias df='df -h '
+
+        export PS1=" ${HOST_COLOR}\h@${USER_COLOR}\W\$${RESET_COLOR} "
     ;;
     Linux)
+        # linux aliases
+        alias systemctl='systemctl --no-pager'
+        alias systemctl-running='systemctl list-units --type=service --state=running'
+        alias df='df -Th'
+
         umask 0022 # fix permissions to 644
-        export PS1="\U1f427 $USR\u@$HOST\h $DIR\W$END \$ "
+        export PS1="\U1f427 ${HOST_COLOR}\h@${USER_COLOR}\W\$ ${RESET_COLOR}"
     ;;
 esac
 
@@ -45,50 +61,49 @@ esac
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # aliases
-alias df='df -h '
 # alias ls='ls -Gph'
 alias ls='ls -hG --color=auto'
 alias cd..='cd ..'  # fix typing error
 alias grep='grep --color=auto'
 alias gitstatus='git remote update && git status'
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-# if ! shopt -oq posix; then
-#   if [ -f /usr/share/bash-completion/bash_completion ]; then
-#     . /usr/share/bash-completion/bash_completion
-#   elif [ -f /etc/bash_completion ]; then
-#     . /etc/bash_completion
-#   fi
-# fi
+git-pull-all() {
+    # get a list of non-hidden directories
+    shopt -u dotglob
+
+    # iterate through list
+    for d in */; do
+    echo "========================"
+    echo " ${d%/}"
+    echo "========================"
+    cd ${d%/}
+    if [[ -d ".git" ]]; then
+        repo=`git config --get remote.origin.url`
+        # gitpath="git@github.com:"
+        #if [[ $repo =~ $gitpath ]]; then
+        if [[ "1" ]]; then
+        echo "${repo}"
+        git pull
+        #   git submodule update --remote --recursive
+        git status
+    fi
+    else
+        echo " ${d%/} is not a Git repo"
+    fi
+    cd ..
+    echo ""
+    echo ""
+    done
+}
 
 # fully update pip
-# -----------------------------------------------
 pip-upgrade-all() {
-    # pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
-    # pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2' | xargs pip3 install --use-feature=2020-resolver --upgrade
     for pkg in $(pip3 list --outdated | cut -d' ' -f1 | awk 'NR > 2')
     do
         # echo ">> ${pkg}"
         pip3 install --upgrade ${pkg}
     done
 }
-
-# add my poetry
-# export LD_LIBRARY_PATH=$HOME/.local/lib/:$LD_LIBRARY_PATH
-# export PATH=$PATH:/home/$USER/.poetry/bin
-
-# use python venv
-# if [[ -d "/home/$USER/venvs" ]]; then
-#     source /home/$USER/venvs/py/bin/activate
-#     echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
-#     echo " ** or do \"changevenv [new venv]\" to switch **"
-# elif [[ -d "/Users/$USER/venvs" ]]; then
-#     source /Users/$USER/venvs/py/bin/activate
-#     echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
-#     echo " ** or do \"changevenv [new venv]\" to switch **"
-# fi
 
 function changevenv () {
     if [ $# -eq 0 ]; then
@@ -111,18 +126,24 @@ function changevenv () {
 }
 
 . ${HOME}/venvs/py/bin/activate
-echo " ** to exit" `python3 --version` "venv type \"deactivate\" **"
-echo " ** or do \"changevenv [new venv]\" to switch **"
+# echo -e "${YELLOW_COLOR}"
+echo -e "${YELLOW_COLOR} ** to exit" `python3 --version` "venv type \"deactivate\" **"
+echo -e " ** or do \"changevenv [new venv]\" to switch **${RESET_COLOR}"
+# echo -e "${RESET_COLOR}"
 
 # ros
-# if [[ -d "/opt/ros" ]]; then
-#    source /opt/ros/foxy/setup.bash
+if [[ -d "/opt/ros" ]]; then
+   . /opt/ros/jazzy/setup.bash
 #    export LANG=en_US.UTF-8
-# fi
+fi
 
 # gecko
 #export LD_LIBRARY_PATH=/opt/gecko/gecko/lib:/opt/gecko/lib:$LD_LIBRARY_PATH
 #export PATH=/opt/gecko/bin:$PATH
 
 export EDITOR=nano
-export SHELL=/usr/local/bin/bash
+
+# freaking macOS
+if [[ "$SHELL" == "/bin/zsh" ]]; then
+    export SHELL=/usr/local/bin/bash
+fi
