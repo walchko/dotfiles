@@ -1,6 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# https://dev.to/ifenna__/adding-colors-to-bash-scripts-48g4
 
 # If not running interactively, don't do anything
 case $- in
