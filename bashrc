@@ -39,7 +39,7 @@ elif [[ -z "${SSH_CLIENT}" ]]; then
     USER_COLOR='\[\033[0;34m\]'
 # ssh login
 else
-    HOST_COLOR='\[\033[1;94m\]'
+    HOST_COLOR='\[\033[1;96m\]'
     USER_COLOR='\[\033[0;34m\]'
 fi
 
