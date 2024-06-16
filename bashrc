@@ -51,7 +51,7 @@ case `uname` in
         alias df='df -Th'
 
         umask 0022 # fix permissions to 644
-        export PS1="\U1f427 ${HOST_COLOR}\h@${USER_COLOR}\W\$ ${RESET_COLOR}"
+        export PS1="🐧 ${HOST_COLOR}\h@${USER_COLOR}\W\$ ${RESET_COLOR}"
     ;;
 esac
 
