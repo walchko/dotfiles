@@ -60,8 +60,8 @@ esac
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # aliases
-# alias ls='ls -Gph'
-alias ls='ls -hG --color=auto'
+# alias ls='ls -Gph' the -G is different between linux and apple
+alias ls='ls -h --color=auto'
 alias cd..='cd ..'  # fix typing error
 alias grep='grep --color=auto'
 alias gitstatus='git remote update && git status'
