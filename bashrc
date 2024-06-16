@@ -23,8 +23,8 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 ID=`id -u`
-YELLOW_COLOR='\033[0;33m'
-RESET_COLOR='\033[0m'
+# YELLOW_COLOR='\[\033[0;33m\]'
+RESET_COLOR='\[\033[0m\]'
 # if [ `uname` == "Darwin" ]; then
 #     # echo `uname`
 #     HOST_COLOR="\[\033[${LIGHT_PURPLE_COLOR}\]"
@@ -124,6 +124,9 @@ function changevenv () {
     fi
 }
 
+# the \[ and \] do not work here like they do in PS1 ????
+YELLOW_COLOR='\033[0;33m'
+RESET_COLOR='\033[0m'
 . ${HOME}/venvs/py/bin/activate
 # echo -e "${YELLOW_COLOR}"
 echo -e "${YELLOW_COLOR} ** to exit" `python3 --version` "venv type \"deactivate\" **"
