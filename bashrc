@@ -29,9 +29,15 @@ RESET_COLOR='\[\033[0m\]'
 #     # echo `uname`
 #     HOST_COLOR="\[\033[${LIGHT_PURPLE_COLOR}\]"
 #     USER_COLOR="\[\033[${PURPLE_COLOR}\]"
-if [ "$ID" == "0" ]; then
+# root
+if [[ "$ID" == "0" ]]; then
     HOST_COLOR='\[\033[1;91m\]'
     USER_COLOR='\[\033[0;31m\]'
+# local login - size of ssh_client == 0
+elif [[ -z "${SSH_CLIENT}" ]]; then
+    HOST_COLOR='\[\033[1;94m\]'
+    USER_COLOR='\[\033[0;34m\]'
+# ssh login
 else
     HOST_COLOR='\[\033[1;94m\]'
     USER_COLOR='\[\033[0;34m\]'
