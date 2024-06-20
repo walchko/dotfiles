@@ -47,7 +47,9 @@ case `uname` in
     Darwin)
         # apple aliases
         alias df='df -h '
-
+        # alias ls='ls -Gph' the -G is different between linux and apple
+        alias ls='ls -hG --color=auto'
+        export PATH="/usr/local/sbin:$PATH"
         export PS1=" ${HOST_COLOR}\h@${USER_COLOR}\W\$${RESET_COLOR} "
     ;;
     Linux)
@@ -55,6 +57,7 @@ case `uname` in
         alias systemctl='systemctl --no-pager'
         alias systemctl-running='systemctl list-units --type=service --state=running'
         alias df='df -Th'
+        alias ls='ls -h --color=auto'
 
         umask 0022 # fix permissions to 644
         export PS1="🐧 ${HOST_COLOR}\h@${USER_COLOR}\W\$ ${RESET_COLOR}"
@@ -66,8 +69,6 @@ esac
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # aliases
-# alias ls='ls -Gph' the -G is different between linux and apple
-alias ls='ls -h --color=auto'
 alias cd..='cd ..'  # fix typing error
 alias grep='grep --color=auto'
 alias gitstatus='git remote update && git status'
