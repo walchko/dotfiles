@@ -6,6 +6,9 @@ Just some dotfiles to help setup bash on macOS and Linux.
     - Allow homebrew shell: `sudo sh -c "echo $(which bash) >> /etc/shells"`
     - Change to homebrew shell: `chsh -s $(which bash)`
 
+- Usage: `ln -s bashrc ~/.profile`
+    - Maybe change file name to `profile`?
+
 # MIT License
 
 *Copyright (c) 2016 Kevin J. Walchko*
