@@ -145,6 +145,8 @@ if [[ -d "/opt/ros" ]]; then
    . /opt/ros/jazzy/setup.bash
 #    export LANG=en_US.UTF-8
     alias refresh='. install/setup.bash'
+    alias colcon-build='colcon build --executor sequential'
+    alias colcon-build-pkg='colcon build --executor sequential --packages-select'
 fi
 
 # gecko
