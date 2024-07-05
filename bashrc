@@ -144,6 +144,7 @@ echo -e " ** or do \"changevenv [new venv]\" to switch **${RESET_COLOR}"
 if [[ -d "/opt/ros" ]]; then
    . /opt/ros/jazzy/setup.bash
 #    export LANG=en_US.UTF-8
+    alias refresh='. install/setup.bash'
 fi
 
 # gecko
