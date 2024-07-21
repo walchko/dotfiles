@@ -74,6 +74,10 @@ alias grep='grep --color=auto'
 alias gitstatus='git remote update && git status'
 
 git-pull-all() {
+    if ! [ -x "$(command -v git)" ]; then
+        echo "git not installed"
+        return 1
+    fi
     # get a list of non-hidden directories
     shopt -u dotglob
 
@@ -100,6 +104,21 @@ git-pull-all() {
     echo ""
     echo ""
     done
+}
+
+pico-load() {
+    if ! [ -x "$(command -v picotool)" ]; then
+        echo "picotool is not installed"
+        return 1
+    elif [ $# -ne 1 ]; then
+        echo "Must give file name to load onto the pi pico"
+        echo -e ">> pico-load <filename>\n"
+        return 1
+    fi
+    UF2=$1
+
+    echo "Loading ${UF2} to pi pico"
+    picotool load "${UF2}" -v -f
 }
 
 # fully update pip
