@@ -73,9 +73,17 @@ alias cd..='cd ..'  # fix typing error
 alias grep='grep --color=auto'
 alias gitstatus='git remote update && git status'
 
+function print_error() {
+    RED="\e[31m"
+    # BLUE="\e[35m"
+    RESET="\e[0m"
+    # LS=`ls $HOME/venvs/`
+    echo -e "${RED}${1}${RESET}"
+}
+
 git-pull-all() {
     if ! [ -x "$(command -v git)" ]; then
-        echo "git not installed"
+        print_error "*** git not installed ***"
         return 1
     fi
     # get a list of non-hidden directories
@@ -108,11 +116,10 @@ git-pull-all() {
 
 pico-load() {
     if ! [ -x "$(command -v picotool)" ]; then
-        echo "picotool is not installed"
+        print_error "*** picotool is not installed ***"
         return 1
     elif [ $# -ne 1 ]; then
-        echo "Must give file name to load onto the pi pico"
-        echo -e ">> pico-load <filename>\n"
+        print_error "Usage: pico-load <filename>\n"
         return 1
     fi
     UF2=$1
@@ -131,9 +138,22 @@ pip-upgrade-all() {
 }
 
 function changevenv () {
+    function changevenv_error() {
+        RED="\e[31m"
+        BLUE="\e[35m"
+        RESET="\e[0m"
+        LS=`ls $HOME/venvs/`
+        # echo -e "${RED}*** Invalid virtual environment (venv) ***${RESET}"
+        print_error "*** Invalid virtual environment (venv) ***"
+        echo -e "Usage: changevenv <new_venv>"
+        echo -e "Valid venvs are:"
+        echo -e "${BLUE}${LS}\n${RESET}"
+    }
     if [ $# -eq 0 ]; then
-        echo -e "\n!! Please select a new venv: changevenv py\n"
-        return
+        changevenv_error
+        # bash will make the error func available, need to remove it
+        unset changevenv_error
+        return 1
     fi
 
     DIR="$HOME/venvs/$1"
@@ -146,7 +166,10 @@ function changevenv () {
 
         echo -e "\n>> SUCCESS! Changed to venv $1\n"
     else
-        echo -e "\n!! Sorry, $1 doesn't exist, choose a new venv\n"
+        changevenv_error
+        # bash will make the error func available, need to remove it
+        unset changevenv_error
+        return 1
     fi
 }
 
