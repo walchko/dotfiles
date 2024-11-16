@@ -50,6 +50,7 @@ case `uname` in
         # alias ls='ls -Gph' the -G is different between linux and apple
         alias ls='ls -hG --color=auto'
         export PATH="/usr/local/sbin:$PATH"
+        export PATH=/opt/homebrew/bin::$PATH
         export PS1=" ${HOST_COLOR}\h@${USER_COLOR}\W\$${RESET_COLOR} "
     ;;
     Linux)
