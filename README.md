@@ -5,9 +5,19 @@ Just some dotfiles to help setup bash on macOS and Linux.
 - macOS:
     - Allow homebrew shell: `sudo sh -c "echo $(which bash) >> /etc/shells"`
     - Change to homebrew shell: `chsh -s $(which bash)`
+    - Show hidden files: command-shift-.
+    - Save `brew` files: `brew bundle dump --describe`
+    - Load files: `brew bundle --file brewfile`
 
 - Usage: `ln -s bashrc ~/.profile`
     - Maybe change file name to `profile`?
+
+
+## Other
+
+- `git`
+    - `git config --global core.editor "nano"`
+
 
 # MIT License
 
