@@ -50,7 +50,7 @@ case `uname` in
         # alias ls='ls -Gph' the -G is different between linux and apple
         alias ls='ls -hG --color=auto'
         export PATH="/usr/local/sbin:$PATH"
-        export PATH=/opt/homebrew/bin::$PATH
+        export PATH=/opt/homebrew/bin:$PATH
         export PS1=" ${HOST_COLOR}\h@${USER_COLOR}\W\$${RESET_COLOR} "
     ;;
     Linux)
@@ -115,17 +115,21 @@ git-pull-all() {
     done
 }
 
-pico-load() {
+flash-pico() {
     if ! [ -x "$(command -v picotool)" ]; then
         print_error "*** picotool is not installed ***"
         return 1
     elif [ $# -ne 1 ]; then
-        print_error "Usage: pico-load <filename>\n"
+        print_error "Usage: flash-pico <filename>\n"
         return 1
     fi
+
     UF2=$1
 
     echo "Loading ${UF2} to pi pico"
+
+    # -v: verify load
+    # -f: force device into BOOTSEL mode, reboot when done
     picotool load "${UF2}" -v -f
 }
 

@@ -1,0 +1,8 @@
+[user]
+	name = walchko
+	email = walchko@users.noreply.github.com
+[user "user"]
+	email = walchko@users.noreply.github.com
+[core]
+	editor = nano
+
