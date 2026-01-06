@@ -19,14 +19,30 @@ Language:        C
 # https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 AlignConsecutiveAssignments:
   Enabled:         true
-  AcrossEmptyLines: true
+  AcrossEmptyLines: false
   AcrossComments:  false
   AlignCompound:   false
   PadOperators:    true
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+BreakBeforeBraces: Attach
 # BraceWrapping:
 #   BeforeElse:      true
-BreakBeforeBraces: Custom
-BraceWrapping:
-  BeforeElse: true
-IndentPPDirectives: BeforeHash
+# BreakBeforeBraces: Custom
+# BraceWrapping:
+#     SplitEmptyFunction: false
+#   BeforeElse: true
+#   AfterStruct: false
+IndentPPDirectives: BeforeHash  # Indent before the # symbol
+ColumnLimit: 200
+# ColumnLimit: 80  # Reasonable line length to avoid wrapping
+QualifierAlignment: Custom
+QualifierOrder: ['static', 'inline', 'const', 'volatile', 'type']  # Ensure static is first
+# BreakBeforeBraces: Allman  # Forces brace on new line, helps with qualifier separation
+# AllowAllParametersOfDeclarationOnNextLine: true  # Keep parameters together
+AllowAllParametersOfDeclarationOnNextLine: false  # Keep parameters together
+PenaltyBreakBeforeFirstCallParameter: 200  # Discourage breaking within signature
+# PenaltyBreakQualifier: 1000  # High penalty to avoid breaking after static
+AlignConsecutiveMacros: true
+TabWidth: 2  # Use 4 spaces for alignment
+UseTab: Never  # Use spaces instead of tabs for consistent alignment
+# CompactNamespaces: true
