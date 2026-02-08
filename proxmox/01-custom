@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# blank screen =====================
+echo -e "\e[2J\e[;H"
+
+# set colors =======================
+BW="\e[1;99m"
+W="\e[0;39m"
+R="\e[0;31m"
+G="\e[0;32m"
+RESET="\e[0m"
+
+# get info =========================
+UPTIME=`uptime -p | cut -d " " -f2-`
+
+SWAP=`free -h | grep "Swap" | awk '{print $2}'`
+SWAP_FREE=`free -h | grep "Swap" | awk '{print $4}'`
+
+MEM=`free -h | grep "Mem" | awk '{print $2}'`
+MEM_FREE=`free -h | grep "Mem" | awk '{print $4}'`
+
+#IPLAN=`ip -4 -o addr list eth0 | awk '{print $4}' | cut -d/ -f1`
+IPLAN=`hostname -I`
+
+DF=`df -h | grep /dev/mapper/pve- | awk '{print $2 }'`
+DF_FREE=`df -h | grep /dev/mapper/pve- | awk '{print $4 }'`
+# DDF=""
+# while read -r line; do
+#   DDF+="Storage............: ${W}${line}${R}"
+# done
+
+CPUTEMP=$((`cat /sys/class/thermal/thermal_zone0/temp`/1000*9/5+32))
+
+PROCS=`ps ax | wc -l | tr -d " "`
+
+# get the load averages
+read one five fifteen rest < /proc/loadavg
+
+echo -e "${BW}"
+figlet `uname -n`
+echo -e "${RESET}"
+
+echo -e "${G}
+`date +"%A, %e %B %Y, %r"`
+`uname -srmo`
+`lsb_release -d 2>/dev/null`
+`lsb_release -c 2>/dev/null`
+${R}
+Uptime.............: ${W}${UPTIME}${R}
+Memory.............: ${W}${MEM_FREE} (Free) / ${MEM} (Total)${R}
+Swap...............: ${W}${SWAP_FREE} (Free) / ${SWAP} (Total)${R}
+Storage............: ${W}${DF_FREE}B (Free) / ${DF}B (Total)${R}
+Load Averages......: ${W}${one}, ${five}, ${fifteen} (1, 5, 15 min)${R}
+CPU Temperature....: ${W}${CPUTEMP} F${R}
+Running Processes..: ${W}${PROCS}${R}
+IP Addr............: ${W}${IPLAN}${W}
+${RESET}"
