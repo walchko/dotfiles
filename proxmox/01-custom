@@ -22,8 +22,9 @@ MEM_FREE=`free -h | grep "Mem" | awk '{print $4}'`
 #IPLAN=`ip -4 -o addr list eth0 | awk '{print $4}' | cut -d/ -f1`
 IPLAN=`hostname -I`
 
-DF=`df -h | grep /dev/mapper/pve- | awk '{print $2 }'`
-DF_FREE=`df -h | grep /dev/mapper/pve- | awk '{print $4 }'`
+DF=`df -h | grep /dev/loop | awk '{print $3 }'`
+DF_FREE=`df -h | grep /dev/loop | awk '{print $5 }'`
+DF_PER=`df -h | grep /dev/loop | awk '{print $6 }'`
 # DDF=""
 # while read -r line; do
 #   DDF+="Storage............: ${W}${line}${R}"
@@ -50,6 +51,7 @@ Uptime.............: ${W}${UPTIME}${R}
 Memory.............: ${W}${MEM_FREE} (Free) / ${MEM} (Total)${R}
 Swap...............: ${W}${SWAP_FREE} (Free) / ${SWAP} (Total)${R}
 Storage............: ${W}${DF_FREE}B (Free) / ${DF}B (Total)${R}
+Storage Used.......: ${W}${DF_PER}${R}
 Load Averages......: ${W}${one}, ${five}, ${fifteen} (1, 5, 15 min)${R}
 CPU Temperature....: ${W}${CPUTEMP} F${R}
 Running Processes..: ${W}${PROCS}${R}
