@@ -36,12 +36,12 @@ USER=$1
 PASSWD=$2
 
 # alternate method
-# printf "%s\n%s\n" "$PASSWD" "$PASSWD" | sudo smbpasswd -a -s "$USER"
+printf "%s\n%s\n" "$PASSWD" "$PASSWD" | sudo smbpasswd -a -s "$USER"
 
-smbpasswd -s -a ${USER} << 'END'
-${PASSWD}
-${PASSWD}
-END
+# smbpasswd -s -a ${USER} << 'END'
+# ${PASSWD}
+# ${PASSWD}
+# END
 
 # Check if the command was successful
 if [ $? -eq 0 ]; then
