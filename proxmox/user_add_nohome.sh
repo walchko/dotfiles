@@ -10,12 +10,10 @@ fi
 USER=$1
 PASSWD=$2
 
+echo "Adding user ${USER}"
 # -M don't create home
 # -U add group with same name
-useradd ${USER} -s /bin/bash -M -U
-# chpasswd << 'END'
-# ${USER}:${PASSWD}
-# END
+useradd ${USER} -s /bin/bash -U
 echo "${USER}:${PASSWD}" | chpasswd
 
 # Check the exit status of the chpasswd command
@@ -25,7 +23,13 @@ else
     echo "Failed to update password for user '${USER}'."
 fi
 
+# Bashrc
+echo " - bashrc"
+rm -f ${HOME}/.bashrc
+ln -s ${PWD}/bashrc ${HOME}/.bashrc
+
 # add user to groups
+echo " - groups"
 usermod -a -G users ${USER}   # why not
 usermod -a -G plugdev ${USER} # media files
 
