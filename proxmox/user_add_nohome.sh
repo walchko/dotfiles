@@ -28,7 +28,7 @@ fi
 # Bashrc
 echo " - bashrc"
 rm -f /home/${USER}/.bashrc
-ln -s ${PWD}/bashrc /home/${USER}/.bashrc
+su -c "ln -s ${PWD}/bashrc /home/${USER}/.bashrc" ${USER}
 
 # add user to groups
 echo " - groups"
