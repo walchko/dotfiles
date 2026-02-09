@@ -14,7 +14,7 @@ echo "Adding user ${USER}"
 # -b base directory (default /home) ... no need?
 # -m create home directory
 # -M don't create home (default?)
-# -U add group with same name
+# -U add group with same name (default?)
 useradd -s /bin/bash -m ${USER}
 echo "${USER}:${PASSWD}" | chpasswd
 
