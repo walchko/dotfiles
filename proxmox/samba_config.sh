@@ -45,6 +45,9 @@ cat << EOF > /etc/samba/smb.conf
     usershare allow guests = no
 
 #======================= Share Definitions =======================
+# browsable: can anyone see the share?
+#            No: home dirs
+#            Yes: common dirs
 [homes]
     comment = Home Directory
     read only = no
@@ -69,7 +72,16 @@ cat << EOF > /etc/samba/smb.conf
     delete veto files = yes
 EOF
 
+# give access to users on media or other shared
+# drives
+groupadd smbuser
+# chown root:smbuser /media
+# chmod 775 /media
+
+# fix permissions
 chown root:root /etc/samba/smb.conf
 chmod 600 /etc/samba/smb.conf
+
+# restart everything
 systemctl --no-pager restart smb
 systemctl --no-pager restart nmb

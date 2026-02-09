@@ -24,3 +24,11 @@ if [ "$?" -eq 0 ]; then
 else
     echo "Failed to update password for user '${USER}'."
 fi
+
+# add user to groups
+usermod -a -G users    # why not
+usermod -a -G plugdev  # media files
+
+groups ${USER}
+
+id ${USER}
