@@ -35,9 +35,21 @@ fi
 USER=$1
 PASSWD=$2
 
+# alternate method
+# printf "%s\n%s\n" "$PASSWD" "$PASSWD" | sudo smbpasswd -a -s "$USER"
+
 smbpasswd -s -a ${USER} << 'END'
 ${PASSWD}
 ${PASSWD}
 END
+
+# Check if the command was successful
+if [ $? -eq 0 ]; then
+    echo "Samba password set successfully for user: $USER"
+    # Ensure the account is enabled (optional, but good practice)
+    smbpasswd -e "$USER"
+else
+    echo "Failed to set Samba password for user: $USER"
+fi
 
 pdbedit -L -v
