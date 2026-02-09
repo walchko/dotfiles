@@ -22,3 +22,6 @@ fi
 
 echo "Double check ${USER} is removed"
 pdbedit -L -v ${USER}
+
+# remove user from smbuser group
+usermod -r -G smbuser ${USER}

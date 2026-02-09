@@ -49,4 +49,6 @@ else
     echo "Failed to set Samba password for user: $USER"
 fi
 
+usermod -a -G smbuser ${USER}
+
 pdbedit -L -v ${USER}
