@@ -1,21 +1,10 @@
 #!/bin/bash
-
-if [[ $# -ne 1 ]]; then
-    echo "ERROR: incorrect parameters"
-    echo "$0 [user] [password]" >&2
-    exit 2
-fi
+# installs and configures samba
 
 apt install -y \
     samba samba-common samba-common-bin \
     cifs-utils python3-pexpect \
     avahi-daemon
-
-smbpasswd -s -a $1 << 'END'
-$2
-$2
-END
-
 
 if [ -f /etc/samba/smb.conf ]; then
     mv -f /etc/samba/smb.conf /etc/samba/smb.conf.bak
@@ -70,5 +59,5 @@ EOF
 
 chown root:root /etc/samba/smb.conf
 chmod 600 /etc/samba/smb.conf
-service smb restart
-service nmb restart
+systemctl --no-pager restart smb
+systemctl --no-pager restart nmb

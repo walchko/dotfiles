@@ -2,6 +2,10 @@
 
 echo "<<< Start >>>"
 
+# fix time
+echo " - timezone"
+timedatectl set-timezone America/New_York
+
 # Bashrc
 echo " - bashrc"
 rm -f ${HOME}/.bashrc
@@ -21,6 +25,6 @@ ln -s ${PWD}/01-custom /etc/update-motd.d/01-custom
 # setup ssh
 echo " - ssh"
 rm -f ${HOME}/.ssh/authorized_keys
-ln -s ${PWD}/authorized_keys ${HOME}/.ssh/authorized_keys
+cp ${PWD}/authorized_keys ${HOME}/.ssh/authorized_keys
 
 echo "<<< Done >>>"

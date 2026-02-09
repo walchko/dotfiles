@@ -18,8 +18,3 @@ else
     # HOST_COLOR='\[\033[1;94m\]'
     # USER_COLOR='\[\033[0;34m\]'
 fi
-# export PS1='${HOST_COLOR}\h:${USER_COLOR}\w\$ ${RESET_COLOR}'
-
-# if [ -d "/opt/ros" ]; then
-#     . /opt/ros/jazzy/setup.bash
-# fi
