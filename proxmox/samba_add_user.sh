@@ -36,7 +36,7 @@ USER=$1
 PASSWD=$2
 
 # alternate method
-printf "%s\n%s\n" "$PASSWD" "$PASSWD" | sudo smbpasswd -a -s "$USER"
+printf "%s\n%s\n" "$PASSWD" "$PASSWD" | smbpasswd -a -s "$USER"
 
 # smbpasswd -s -a ${USER} << 'END'
 # ${PASSWD}
