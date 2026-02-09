@@ -35,13 +35,10 @@ fi
 USER=$1
 PASSWD=$2
 
-# alternate method
+# pipe password with returns to command
+# -s silent, no prompt for new password
+# -a is for add user
 printf "%s\n%s\n" "$PASSWD" "$PASSWD" | smbpasswd -a -s "$USER"
-
-# smbpasswd -s -a ${USER} << 'END'
-# ${PASSWD}
-# ${PASSWD}
-# END
 
 # Check if the command was successful
 if [ $? -eq 0 ]; then
@@ -52,4 +49,4 @@ else
     echo "Failed to set Samba password for user: $USER"
 fi
 
-pdbedit -L -v
+pdbedit -L -v ${USER}

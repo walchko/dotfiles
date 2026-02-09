@@ -11,14 +11,14 @@ USER=$1
 
 pdbedit -x -u ${USER}
 
-# # Check if the command was successful
-# if [ $? -eq 0 ]; then
-#     echo "Samba password set successfully for user: $USER"
-#     # Ensure the account is enabled (optional, but good practice)
-#     smbpasswd -e "$USER"
-# else
-#     echo "Failed to set Samba password for user: $USER"
-# fi
+# Check if the command was successful
+if [ $? -eq 0 ]; then
+    echo "Samba $USER removed"
+    # Ensure the account is enabled (optional, but good practice)
+    smbpasswd -e "$USER"
+else
+    echo "Failed to remove $USER"
+fi
 
 echo "Double check ${USER} is removed"
 pdbedit -L -v ${USER}

@@ -55,6 +55,17 @@ cat << EOF > /etc/samba/smb.conf
     directory mask = 0775
     veto files = /._*/.DS_Store/
     delete veto files = yes
+
+[media]
+    comment = Media Directory
+    read only = no
+    writable = yes
+    browsable = yes
+    guest ok = no
+    create mask = 0664
+    directory mask = 0775
+    veto files = /._*/.DS_Store/
+    delete veto files = yes
 EOF
 
 chown root:root /etc/samba/smb.conf
