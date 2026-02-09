@@ -13,7 +13,7 @@ PASSWD=$2
 echo "Adding user ${USER}"
 # -M don't create home
 # -U add group with same name
-useradd ${USER} -s /bin/bash -U
+useradd -s /bin/bash -b /home ${USER}
 echo "${USER}:${PASSWD}" | chpasswd
 
 # Check the exit status of the chpasswd command

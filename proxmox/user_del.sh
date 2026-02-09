@@ -14,7 +14,7 @@ usermod -G "" ${USER}
 
 deluser --remove-home ${USER}
 # deluser ${USER}
-delgroup ${USER}
+# delgroup ${USER} # done automatically w/deluser?
 
 # # Check the exit status of the chpasswd command
 # if [ "$?" -eq 0 ]; then
