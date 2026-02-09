@@ -26,8 +26,8 @@ else
 fi
 
 # add user to groups
-usermod -a -G users    # why not
-usermod -a -G plugdev  # media files
+usermod -a -G users ${USER}   # why not
+usermod -a -G plugdev ${USER} # media files
 
 groups ${USER}
 
