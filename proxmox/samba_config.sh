@@ -57,6 +57,7 @@ cat << EOF > /etc/samba/smb.conf
     delete veto files = yes
 
 [media]
+    path = /media
     comment = Media Directory
     read only = no
     writable = yes
