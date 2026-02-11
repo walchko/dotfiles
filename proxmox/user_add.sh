@@ -1,5 +1,5 @@
 #!/bin/bash
-# Adds a user with no home
+# Adds a user with home
 
 if [[ $# -ne 2 ]]; then
     echo "ERROR: incorrect parameters"
@@ -9,6 +9,7 @@ fi
 
 USER=$1
 PASSWD=$2
+USERHOME=/home/${USER}
 
 echo "Adding user ${USER}"
 # -b base directory (default /home) ... no need?
@@ -27,13 +28,38 @@ fi
 
 # Bashrc
 echo " - bashrc"
-rm -f /home/${USER}/.bashrc
-su -c "ln -s ${PWD}/bashrc /home/${USER}/.bashrc" ${USER}
+rm -f ${USERHOME}/.bashrc
+su -c "ln -s ${PWD}/bashrc ${USERHOME}/.bashrc" ${USER}
+
+# setup sudo
+FILE="/etc/sudoers.d/nopasswd"
+if [[ ! -f ${FILE} ]]; then
+    echo " - sudo"
+    apt install -y sudo
+    # all members of sudo group don't need password
+    # usermod -a -G sudo ${USER}
+    cat << EOF > ${FILE}
+%sudo ALL = (ALL) NOPASSWD: ALL
+Defaults exempt_group = sudo
+EOF
+else
+    echo " - sudo: already installed"
+fi
+
+# setup ssh
+echo " - ssh"
+mkdir -p ${USERHOME}/.ssh 
+rm -f ${USERHOME}/.ssh/authorized_keys
+cat << EOF > ${USERHOME}/.ssh/authorized_keys
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCJuBFkift9eHbOTgDDcT66DmMcCoSeOQXdw4xcSdbw kevin@Logan.local
+EOF
+chown ${USER}:${USER} ${USERHOME}/.ssh/authorized_keys
 
 # add user to groups
 echo " - groups"
-usermod -a -G users ${USER}   # why not
-usermod -a -G plugdev ${USER} # media files
+usermod -aG users ${USER}   # why not
+usermod -aG plugdev ${USER} # media files
+usermod -aG sudo ${USER}
 
 groups ${USER}
 

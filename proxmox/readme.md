@@ -5,6 +5,7 @@ These help setup LXC on Proxmox
 ## Scripts
 
 - `manual_install.sh`:
+    - sets up locales
     - sets timezone
     - symbolic link from `bashrc` to `~/.bashrc`
     - sets up MOTD
@@ -18,4 +19,6 @@ These help setup LXC on Proxmox
 - `user_add.sh [user] [password]`:
     - adds a new user to system with home at `/home/USER`
     - creates a group with same name
+    - installs `sudo` and adds user to group
+    - sets up `ssh`
 - `user_del.sh [user]`

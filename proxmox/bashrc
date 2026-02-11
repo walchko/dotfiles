@@ -2,7 +2,9 @@ alias ls='ls --color -h'
 alias systemctl='systemctl --no-pager'
 alias systemctl-running='systemctl list-units --type=service --state=running'
 alias df='df -Th'
+
 export EDITOR=nano
+export LANG=en_US.UTF-8
 
 ID=`id -u`
 RESET_COLOR='\[\033[0m\]'
